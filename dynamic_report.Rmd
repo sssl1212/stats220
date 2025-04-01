@@ -1,0 +1,81 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+  body {
+    color: #4a4949;
+    background-color: #f9f9f9;
+    font-family: "KG Perfect Penmanship";
+  }
+
+```
+# Project 2 Youtube ads
+### Seulgi Lim / Slim674
+
+Over several days we collected data based on the ads we received on Youtube. The data was collected on Google Form and was analysed further.
+
+## From our sample, what is the mean length of the ads how does that compare with the longest ad?
+
+```{r}
+# Installing Tidyverse
+library(tidyverse)
+
+# Data
+cvs_file <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ2Y3NqqIrURCjuTCuH4imN6OJmCdzT0UP4_gwux7oOx43LrwrpS5gVCayY-pShcMSNi9nns6XspPXW/pub?gid=296879182&single=true&output=csv"
+logged_data <- read_csv(cvs_file)
+
+latest_data <- logged_data %>% 
+  rename(Date_and_Time = 1, 
+         Ad_length = 2,
+         Ad_type = 3,
+         New_or_old_ad = 4)
+
+# What is the longest ad?
+longest_ad <- max(latest_data$Ad_length) # longest_ad <- max(latest_data$Ad_length)
+
+# What is the mean ad length?
+mean_ad <- mean(latest_data$Ad_length) %>% round(2) # mean_ad <- mean(latest_data$Ad_length) %>% round(2)
+
+paste("The longest ad is", 
+      longest_ad, 
+      "sec.", 
+      "The mean ad length is",
+      mean_ad,
+      "sec.")
+```
+## What If youtube updates their ads?
+This was asked to see how if they update their ad library. It was also asked to see how heavily they were influenced by age, demographic, or gender 
+```{r}
+ggplot(data = latest_data) +
+  geom_bar(aes(x = New_or_old_ad),
+           fill = "#ADD8E6") +
+  labs(title = "Are the same ads shown repeatedly?",
+       subtitle = "Bar chart showing if the same ads were shown or new ads in sample(Stats220P2)",
+       caption = "Source: Youtube",
+       x = "New or old ad",
+       y = "Percentage")
+```
+
+However, we saw that most of the ads we saw were new. This suggest that they do not heavily personalise who they show their ads to.
+
+## What type of ad is most common for what length of ad?
+This question was ask to identify any relationship between Ad Length and Ad type 
+```{r}
+latest_data %>%
+  ggplot() +
+  geom_bar(aes(x = Ad_length, fill = Ad_type)) +
+  labs(title = "Relationship between Ad length and Ad type",
+       subtitle = "Comparing Ad length and Ad type for ads on the (Stats220P2)",
+       caption = "Source: Youtube",
+       x = "Ad length (sec)",
+       y = "Ad type")
+```
+
+The bar graph above showed that as the ad is shorter than 15sec it tends to be not skippable. However if it is longer than 15s they are skippable. If the ad was exactly 15sec, the ad was evenly likely to be skippable or not skippable
