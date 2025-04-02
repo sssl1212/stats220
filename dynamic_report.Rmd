@@ -55,7 +55,7 @@ paste("The longest ad is",
 ### How often are the ads updated? Do we really see the same ads?
 This was asked to see if they update their ad library. It was also asked to see how heavily they were influenced by age, demographic, or gender. 
 ```{r}
-BG1 <- ggplot(data = latest_data) +
+ggplot(data = latest_data) +
   geom_bar(aes(x = New_or_old_ad),
            fill = "#ADD8E6") +
   labs(title = "Are the same ads shown repeatedly?",
@@ -74,7 +74,7 @@ However, we saw that most of the ads were new. This suggests that they do not he
 This question was ask to identify any relationship between Ad Length and Ad type 
 
 ```{r}
-BG2 <- latest_data %>%
+latest_data %>%
   ggplot() +
   geom_bar(aes(x = Ad_length, fill = Ad_type)) +
   labs(title = "Relationship between Ad length and Ad type",
@@ -102,7 +102,7 @@ BG1 <- ggplot(data = latest_data) +
        x = "New or old ad",
        y = "Percentage")
 
-ggsave("BG1.png", plot = BG1)
+ggsave("BG1.png", plot = BG1, width = 3, height = 3)
 
 BG2 <- ggplot(data = latest_data) +
   geom_bar(aes(x = Ad_length),
@@ -113,7 +113,7 @@ BG2 <- ggplot(data = latest_data) +
        x = "Ad length(sec)",
        y = "Percentage")
 
-ggsave("BG2.png", plot = BG2)
+ggsave("BG2.png", plot = BG2, width = 3, height = 3)
 
 BG3 <- ggplot(data = latest_data) +
   geom_bar(aes(x = Ad_type),
@@ -124,7 +124,7 @@ BG3 <- ggplot(data = latest_data) +
        x = "Ad type",
        y = "Percentage")
 
-ggsave("BG3.png", plot = BG3)
+ggsave("BG3.png", plot = BG3, width = 3, height = 3)
 
 file.exist("BG3.png")
 
