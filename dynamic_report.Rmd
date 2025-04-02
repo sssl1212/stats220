@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
 # Project 2 Youtube ads
 ### Seulgi Lim / Slim674
 
-Over several days we collected data based on the ads we received on Youtube. The data was collected on Google Form and was analysed further.
+Over several days we collected data based on the ads we received on Youtube. We collected data asking if the ad was skippable or not skippable, if it was previously seen or new, and the length of the ad. The data was collected on Google Form and was analysed further.
 
 ## From our sample, what is the mean length of the ads how does that compare with the longest ad?
 
@@ -51,7 +51,7 @@ paste("The longest ad is",
       "sec.")
 ```
 ## What If youtube updates their ads?
-This was asked to see how if they update their ad library. It was also asked to see how heavily they were influenced by age, demographic, or gender 
+This was asked to see if they update their ad library. It was also asked to see how heavily they were influenced by age, demographic, or gender. 
 ```{r}
 ggplot(data = latest_data) +
   geom_bar(aes(x = New_or_old_ad),
@@ -63,7 +63,7 @@ ggplot(data = latest_data) +
        y = "Percentage")
 ```
 
-However, we saw that most of the ads we saw were new. This suggest that they do not heavily personalise who they show their ads to.
+However, we saw that most of the ads were new. This suggests that they do not heavily personalise who they show their ads to. This also confirms that the ads are not as repetitive as we believe.  
 
 ## What type of ad is most common for what length of ad?
 
@@ -80,4 +80,7 @@ latest_data %>%
        y = "Ad type")
 ```
 
-The bar graph above showed that as the ad is shorter than 15sec it tends to be not skippable. However if it is longer than 15s they are skippable. If the ad was exactly 15sec, the ad was evenly likely to be skippable or not skippable
+The bar graph above shows that as the ad is shorter than 15 seconds, it tends to be not skippable. However, if it is longer than 15s, they are skippable. If the ad was precisely 15sec, the ad was evenly likely to be skippable or not. After further research, we figured out YouTube's rule highly influenced the pattern we observed; the maximum length for a non-skippable ad was 15 sec. 
+
+## Overall 
+From the data I have collected, I have analysed that the ads are not as long and repetitive as I thought. Youtube displays a large variety of ads.
