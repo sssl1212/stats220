@@ -64,7 +64,6 @@ ggplot(data = latest_data) +
        x = "New or old ad",
        y = "Percentage")
 
-ggsave("BG1.png", plot = BG1)
 ```
 
 However, we saw that most of the ads were new. This suggests that they do not heavily personalise who they show their ads to. This also confirms that the ads are not as repetitive as we believe.  
@@ -93,6 +92,17 @@ From the data I have collected, I have analysed that the ads are not as long and
 ```{r}
 library(magick)
 
+BG1 <- ggplot(data = latest_data) +
+  geom_bar(aes(x = New_or_old_ad),
+           fill = "#ADD8E6") +
+  labs(title = "Are the same ads shown repeatedly?",
+       subtitle = "Bar chart showing if the same ads were shown or new ads in sample(Stats220P2)",
+       caption = "Source: Youtube",
+       x = "New or old ad",
+       y = "Percentage")
+
+ggsave("BG1.png", plot = BG1)
+
 BG2 <- ggplot(data = latest_data) +
   geom_bar(aes(x = Ad_length),
            fill = "#ADD8E6") +
@@ -116,7 +126,9 @@ BG3 <- ggplot(data = latest_data) +
 ggsave("BG3.png", plot = BG3, width = 3, height = 3)
 
 
-counts <- 1 : 2
+counts <- 1 : 3
+
+frame1 <- image_read("BG1.png")
 
 frame2 <- image_read("BG2.png")
 
