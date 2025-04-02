@@ -136,7 +136,7 @@ frame3 <- image_read("BG3.png")
 
 my_animated_meme <- frames <- c(frame1, frame2, frame3)
 
-image_animate(frames, fps = 3)
+image_animate(frames, fps = 300)
 
 my_animated_meme %>% image_write("my_animated_meme.gif")
 ```
