@@ -102,7 +102,7 @@ BG2 <- ggplot(data = latest_data) +
        x = "Ad length(sec)",
        y = "Percentage")
 
-ggsave("BG1.png", plot = BG1)
+ggsave("BG2.png", plot = BG2)
 
 BG3 <- ggplot(data = latest_data) +
   geom_bar(aes(x = Ad_type),
