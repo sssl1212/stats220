@@ -101,18 +101,18 @@ BG1 <- ggplot(data = latest_data) +
        x = "New or old ad",
        y = "Percentage")
 
-ggsave("BG1.png", plot = BG1)
+ggsave("BG1.png", plot = BG1, width = 1, height = 1)
 
 BG2 <- ggplot(data = latest_data) +
   geom_bar(aes(x = Ad_length),
            fill = "#ADD8E6") +
-  labs(title = "What are the lengths of the ads?",
+  labs(title = "Lengths of the ads?",
        subtitle = "Bar chart showing ad length in sample(Stats220P2)",
        caption = "Source: Youtube",
        x = "Ad length(sec)",
        y = "Percentage")
 
-ggsave("BG2.png", plot = BG2, width = 3, height = 3)
+ggsave("BG2.png", plot = BG2, width = 1, height = 1)
 
 BG3 <- ggplot(data = latest_data) +
   geom_bar(aes(x = Ad_type),
@@ -123,7 +123,7 @@ BG3 <- ggplot(data = latest_data) +
        x = "Ad type",
        y = "Percentage")
 
-ggsave("BG3.png", plot = BG3, width = 3, height = 3)
+ggsave("BG3.png", plot = BG3, width = 1, height = 1)
 
 
 counts <- 1 : 3
@@ -136,7 +136,7 @@ frame3 <- image_read("BG3.png")
 
 my_animated_meme <- frames <- c(frame2, frame3)
 
-image_animate(frames, fps = 1)
+image_animate(frames, fps = 2)
 
 my_animated_meme %>% image_write("my_animated_meme.gif")
 ```
