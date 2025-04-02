@@ -52,7 +52,7 @@ paste("The longest ad is",
       "sec.")
 ```
 ## Graphs
-## How often are the ads updated? Do we really see the same ads?
+### How often are the ads updated? Do we really see the same ads?
 This was asked to see if they update their ad library. It was also asked to see how heavily they were influenced by age, demographic, or gender. 
 ```{r}
 ggplot(data = latest_data) +
