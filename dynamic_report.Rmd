@@ -64,7 +64,6 @@ BG1 <- ggplot(data = latest_data) +
        x = "New or old ad",
        y = "Percentage")
 
-ggsave(bargraph1.png, plot = BG1)
 ```
 
 However, we saw that most of the ads were new. This suggests that they do not heavily personalise who they show their ads to. This also confirms that the ads are not as repetitive as we believe.  
@@ -83,7 +82,7 @@ BG2 <- latest_data %>%
        x = "Ad length (sec)",
        y = "Ad type")
 
-ggsave(bargraph2.png, plot = BG2)
+ggsave("BG2.png", plot = BG2)
 ```
 
 The bar graph above shows that as the ad is shorter than 15 seconds, it tends to be not skippable. However, if it is longer than 15s, they are skippable. If the ad was precisely 15sec, the ad was evenly likely to be skippable or not. After further research, we figured out YouTube's rule highly influenced the pattern we observed; the maximum length for a non-skippable ad was 15 sec. 
@@ -95,16 +94,9 @@ From the data I have collected, I have analysed that the ads are not as long and
 library(magick)
 counts <- 1 : 4
 
-meme <- image_read(url)
-  
-frame1 <- 
+frame1 <- BG2.png
 
-frame2 <- meme %>%
-  image_annotate(text = "I CAN HAS CHEEZEBURGER?",
-                 size = 40, 
-                 font = "Impact",
-                 color = "#f5f107",
-                 gravity = "north")
+frame2 <- BG2
 
 frame3 <- meme %>%
   image_annotate(text = "I CAN HAS CHEEZEBURGER?",
