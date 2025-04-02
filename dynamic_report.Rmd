@@ -21,7 +21,8 @@ knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
 
 Over several days we collected data based on the ads we received on Youtube. We collected data asking if the ad was skippable or not skippable, if it was previously seen or new, and the length of the ad. The data was collected on Google Form and was analysed further.
 
-## From our sample, what is the mean length of the ads how does that compare with the longest ad?
+## Summary values
+### From our sample, what is the mean length of the ads how does that compare with the longest ad?
 
 ```{r}
 # Installing Tidyverse
@@ -50,7 +51,8 @@ paste("The longest ad is",
       mean_ad,
       "sec.")
 ```
-## What If youtube updates their ads?
+## Graphs
+## How often are the ads updated? Do we really see the same ads?
 This was asked to see if they update their ad library. It was also asked to see how heavily they were influenced by age, demographic, or gender. 
 ```{r}
 ggplot(data = latest_data) +
@@ -65,7 +67,7 @@ ggplot(data = latest_data) +
 
 However, we saw that most of the ads were new. This suggests that they do not heavily personalise who they show their ads to. This also confirms that the ads are not as repetitive as we believe.  
 
-## What type of ad is most common for what length of ad?
+### What type of ad is most common for what length of ad?
 
 This question was ask to identify any relationship between Ad Length and Ad type 
 
