@@ -66,7 +66,9 @@ ggplot(data = latest_data) +
 However, we saw that most of the ads we saw were new. This suggest that they do not heavily personalise who they show their ads to.
 
 ## What type of ad is most common for what length of ad?
+
 This question was ask to identify any relationship between Ad Length and Ad type 
+
 ```{r}
 latest_data %>%
   ggplot() +
