@@ -126,6 +126,8 @@ BG3 <- ggplot(data = latest_data) +
 
 ggsave("BG3.png", plot = BG3)
 
+file.exist("BG3.png")
+
 
 counts <- 1 : 3
 
