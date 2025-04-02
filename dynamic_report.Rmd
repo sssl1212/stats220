@@ -89,6 +89,7 @@ The bar graph above shows that as the ad is shorter than 15 seconds, it tends to
 ## Overall 
 From the data I have collected, I have analysed that the ads are not as long and repetitive as I thought. Youtube displays a large variety of ads.
 
+I have also included a gif below that shows New_or_old_ad, Ad_length, and Ad_type indivisually. 
 ```{r}
 library(magick)
 
@@ -101,7 +102,7 @@ BG1 <- ggplot(data = latest_data) +
        x = "New or old ad",
        y = "Percentage")
 
-ggsave("BG1.png", plot = BG1, width = 1, height = 1)
+ggsave("BG1.png", plot = BG1, width = 2, height = 2)
 
 BG2 <- ggplot(data = latest_data) +
   geom_bar(aes(x = Ad_length),
@@ -112,7 +113,7 @@ BG2 <- ggplot(data = latest_data) +
        x = "Ad length(sec)",
        y = "Percentage")
 
-ggsave("BG2.png", plot = BG2, width = 1, height = 1)
+ggsave("BG2.png", plot = BG2, width = 2, height = 2)
 
 BG3 <- ggplot(data = latest_data) +
   geom_bar(aes(x = Ad_type),
@@ -123,7 +124,7 @@ BG3 <- ggplot(data = latest_data) +
        x = "Ad type",
        y = "Percentage")
 
-ggsave("BG3.png", plot = BG3, width = 1, height = 1)
+ggsave("BG3.png", plot = BG3, width = 2, height = 2)
 
 
 counts <- 1 : 3
