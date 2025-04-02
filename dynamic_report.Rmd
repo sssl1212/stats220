@@ -55,7 +55,7 @@ paste("The longest ad is",
 ### How often are the ads updated? Do we really see the same ads?
 This was asked to see if they update their ad library. It was also asked to see how heavily they were influenced by age, demographic, or gender. 
 ```{r}
-ggplot(data = latest_data) +
+BG1 <- ggplot(data = latest_data) +
   geom_bar(aes(x = New_or_old_ad),
            fill = "#ADD8E6") +
   labs(title = "Are the same ads shown repeatedly?",
@@ -63,6 +63,8 @@ ggplot(data = latest_data) +
        caption = "Source: Youtube",
        x = "New or old ad",
        y = "Percentage")
+
+ggsave(bargraph1.png, plot = BG1)
 ```
 
 However, we saw that most of the ads were new. This suggests that they do not heavily personalise who they show their ads to. This also confirms that the ads are not as repetitive as we believe.  
@@ -72,7 +74,7 @@ However, we saw that most of the ads were new. This suggests that they do not he
 This question was ask to identify any relationship between Ad Length and Ad type 
 
 ```{r}
-latest_data %>%
+BG2 <- latest_data %>%
   ggplot() +
   geom_bar(aes(x = Ad_length, fill = Ad_type)) +
   labs(title = "Relationship between Ad length and Ad type",
@@ -80,9 +82,46 @@ latest_data %>%
        caption = "Source: Youtube",
        x = "Ad length (sec)",
        y = "Ad type")
+
+ggsave(bargraph2.png, plot = BG2)
 ```
 
 The bar graph above shows that as the ad is shorter than 15 seconds, it tends to be not skippable. However, if it is longer than 15s, they are skippable. If the ad was precisely 15sec, the ad was evenly likely to be skippable or not. After further research, we figured out YouTube's rule highly influenced the pattern we observed; the maximum length for a non-skippable ad was 15 sec. 
 
 ## Overall 
 From the data I have collected, I have analysed that the ads are not as long and repetitive as I thought. Youtube displays a large variety of ads.
+
+```{r}
+library(magick)
+counts <- 1 : 4
+
+meme <- image_read(url)
+  
+frame1 <- 
+
+frame2 <- meme %>%
+  image_annotate(text = "I CAN HAS CHEEZEBURGER?",
+                 size = 40, 
+                 font = "Impact",
+                 color = "#f5f107",
+                 gravity = "north")
+
+frame3 <- meme %>%
+  image_annotate(text = "I CAN HAS CHEEZEBURGER?",
+                 size = 40, 
+                 font = "Impact",
+                 color = "#1ff507",
+                 gravity = "center")
+
+frame4 <- meme %>%
+  image_annotate(text = "I CAN HAS CHEEZEBURGER?",
+                 size = 40, 
+                 font = "Impact",
+                 color = "#07d9f5",
+                 gravity = "north")
+
+
+my_animated_meme <- frames <- c(frame1, frame2, frame3, frame4)
+
+image_animate(frames, fps = 1)
+```
